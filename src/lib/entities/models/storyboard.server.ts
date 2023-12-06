@@ -4,10 +4,10 @@ import { shots } from "./shots.server"
 
 
 export type Storyboard = {
-	id: number
+	id?: number
 	nome: string
 	descricao: string
-	thumb: string
+	thumb?: string
 	aprovado: number
    inclusao: string
 }
