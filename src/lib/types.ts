@@ -8,3 +8,11 @@ export const FormSchema = z.object({
    inclusao: z.string()
 })
 
+export const ShotSchema = z.object({
+   progresso: z.number().optional(),
+   tipo: z.string(),
+   dialogo: z.string(),
+   locucao: z.string(),
+   musica: z.string(),
+   id_stotyboard: z.number()
+})

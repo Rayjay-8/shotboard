@@ -1,12 +1,15 @@
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 import { relations } from 'drizzle-orm'
 import { storyboard } from './storyboard.server'
-import { medias } from './midias.server'
+import { midias } from './midias.server'
+
+
+export const typeShots = ["Extreme wide" , "wide" , "up shot" , "down shot" , "medium shot" ,  "over shouder", "dolly" , "tilt up","tilt down","close up", "extreme close up"]
 
 export type Shots = {
    id_shot: number
    progresso: number
-   tipo: "top-down" | "tilt" | "wide" | "close"
+   tipo: typeof typeShots
    dialogo: string
    musica: string
    locucao: string
@@ -28,5 +31,5 @@ export const shotsRelations = relations(shots, ({one, many}) => ({
       fields: [shots.id_stotyboard],
       references: [storyboard.id]
    }),
-   medias: many(medias)
+   midias: many(midias)
 }))
