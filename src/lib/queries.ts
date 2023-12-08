@@ -26,6 +26,16 @@ export const  getShotsStory = async (idstory:number) => {
    }
 }
 
+export const getShotinfo = async (idshot:number) => {
+   try {
+      const data = await db.select().from(shots).where(eq(shots.id_shot, idshot))
+      return data[0] ?? null
+   } catch (error) {
+      console.log(error)
+      return {error: true, data: null}
+   }
+}
+
 
 export const getMidiasShot = async (idshot:number) => {
    try {

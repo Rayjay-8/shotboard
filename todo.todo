@@ -3,20 +3,23 @@
 [x] fazer a criação de um shot
 [x] listar as midia dos shot
 [x] vincular midias com o shot
-   [] desenhar 
-   https://codepen.io/thaomvo/pen/abzrNJg
-   https://codepen.io/yananas/pen/rwvZvY
-   https://codepen.io/BananaCoding/pen/mdrGjpL
-   https://www.youtube.com/watch?v=p3jJ5z7i3KE
-   https://www.youtube.com/watch?v=yOjJy0L7Rt8
-   [] salvar o desenho
+   [x] desenhar 
+   [x] salvar o desenho
    [x] fazer o upload dentro do shot
    [x] salvar esses arquivos localmente
    [x] Poder definir a midia pricipal do shot
    [x] permitir adicionar comentario na midia
    [x] permitir mudar o tipo da midia
    [x] permitir mudar a ordem
+   [x] apagar uma midia
+   [x] Gravar no celular e mandar a midia direto para o app
+   [x] arrumar o id da midia no banco, tera que apagar tudo e recomecar
+   [x] enviar varias midias por vez
+   [x] adicionar tempo de midia 
+   [x] permitir desenhar no mobile
+   [x] se o shot tem 10 segundos mostrar o percentual do shot de acordo com as midia marcadas como principal
+   [] criar botão exportar - ele junta todas as midias em um .rar pronta para edição
 [] apagar um shot
-[] Permitir informar a porcentagem do shot
+[] colocar borracha
+[] deixar mais facil marcar midia como principal
 [] Mostrar e poder editar tipo do shot
-[] criar botão exportar - ele junta todas as midias em um .rar pronta para edição

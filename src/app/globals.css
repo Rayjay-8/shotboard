@@ -76,3 +76,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+body {
+  overscroll-behavior: contain;
+}

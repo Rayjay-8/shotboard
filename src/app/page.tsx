@@ -6,11 +6,21 @@ import { Titulo } from '@/components/ui/Titulo'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { getallstoryboard } from '@/lib/queries'
 import NovoStory from './NovoStory';
+import axios from "axios";
+
+const baseURL = process.env.NEXT_PUBLIC_API_URL
+    , isServer = typeof window === 'undefined'
 
 
+export const api = axios.create({
+    baseURL,
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+  
 export default async function Home() {
   const data = await getallstoryboard()
-  console.log(data, new Date().toISOString())
   return (
     <main className="">
       <Titulo className="bg-emerald-500">Storyboard</Titulo>

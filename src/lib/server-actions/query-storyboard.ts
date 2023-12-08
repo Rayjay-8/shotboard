@@ -19,9 +19,10 @@ export const createnovostoryboard = async (data:Storyboard) => {
 export const deleteStoryboard = async (id:number) => {
    try {
       // todo remover as midia dos shots
+      const retMidias = await db.delete(midias).where(eq(midias.id_storyboard, id))
       const retshots = await db.delete(shots).where(eq(shots.id_stotyboard, id))
       const ret = await db.delete(storyboard).where(eq(storyboard.id, id))
-      console.log(retshots)
+      
       revalidateTag('storyboard')
       return ret
    } catch (error) {

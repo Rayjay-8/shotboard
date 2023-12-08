@@ -21,11 +21,10 @@ const DeleteStory = ({idStoryboard}:{idStoryboard:number}) => {
    const router = useRouter()
 
    const deleteStory = async () => {
-      console.log("delete", idStoryboard)
       const ret = await deleteStoryboard(idStoryboard)
-      console.log("ret", ret)
       router.replace('/')
    }
+
   return (
     <>
     <AlertDialog>
@@ -37,7 +36,7 @@ const DeleteStory = ({idStoryboard}:{idStoryboard:number}) => {
       <AlertDialogHeader>
          <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
          <AlertDialogDescription>
-         Essa ação não poderá ser desfeita. Isso irá permanentemente apagar seu storyboard.
+         Essa ação não poderá ser desfeita. Isso irá permanentemente apagar seu storyboard/shots/midias.
          </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>

@@ -24,5 +24,6 @@ export const MidiaSchema = z.object({
    principal: z.coerce.boolean(),
    ordem: z.coerce.number(),
    comentario: z.coerce.string().optional(),
-   tipo: z.string()
+   tipo: z.string(),
+   duracao_s: z.coerce.number()
 })

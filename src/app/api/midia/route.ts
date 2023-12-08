@@ -23,8 +23,18 @@ export async function POST(request: Request) {
 }
 
 export async function GET(req: NextRequest) {
-
-   console.log(req)
-   return NextResponse.json({ sessionId: 1234 });
+   // const file = req.url.searchParams
+   const filepath = req.nextUrl.searchParams.get('file')
+   console.log(filepath)
+   if(filepath){
+      try {
+         
+         fs.unlink('public/midias/'+filepath)
+      } catch (error) {
+         console.log(error)
+         
+      }
+   }
    
+   return NextResponse.json({ sessionId: 1234 });
 }
