@@ -15,12 +15,15 @@ const page = async ({params}:{params: {id:number, shotid: number}}) => {
          Storyboard #{params.id} - 
          Shot #{params.shotid}
          </Titulo>
-         <UploadMidias story={params.id} shot={params.shotid}/>
+         <div className='px-16 py-6'>
+            <UploadMidias story={params.id} shot={params.shotid}/>
 
-         <div>
-            <h1>Lista card midias</h1>
-            <ListaMidias shot={params.shotid}/>
          </div>
+
+         {/* <div>
+            <h1>Lista card midias</h1>
+         </div> */}
+            <ListaMidias shot={params.shotid}/>
     </main>
   )
 }

@@ -14,16 +14,22 @@ export type Shots = {
    musica: string
    locucao: string
    id_stotyboard: number
+   descricao: string
+   duracao_s: number
+   ordem:number
 }
 
 export const shots = sqliteTable('shot',{
    id_shot: integer(`id_shot`).primaryKey(),
+   descricao: text('descricao'),
    progresso: integer('progresso'),
    tipo: text('tipo'),
    dialogo: text('dialogo'),
    musica: text('musica'),
    locucao: text('locucao'),
    id_stotyboard: integer(`id_stotyboard`).notNull().references(() => storyboard.id),
+   duracao_s: integer('duracao_s'),
+   ordem: integer('ordem')
 })
 
 export const shotsRelations = relations(shots, ({one, many}) => ({

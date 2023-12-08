@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       return fs.writeFile(filePath, Buffer.from(buffer));
     });
 
-   return NextResponse.json({success: true, path: nomeTratado });
+   return NextResponse.json({success: true, path: nomeTratado, type:  midia.type});
 }
 
 export async function GET(req: NextRequest) {

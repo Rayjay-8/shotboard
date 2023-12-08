@@ -5,12 +5,14 @@ import { storyboard } from '..'
 
 
 export type Midias = {
-   id_media: number
+   id_media?: number
    id_shot: number
    id_storyboard: number
    principal?: number
    path: string
    tipo: `video` | `image` | `audio`
+   ordem: number
+   comentario?: string
 }
 
 export const midias = sqliteTable('midias', {
@@ -19,7 +21,9 @@ export const midias = sqliteTable('midias', {
    id_storyboard: integer('id_storyboard').notNull().references(() => storyboard.id),
    principal: integer(`principal`),
    path: text('path'),
-   tipo: text('tipo')
+   tipo: text('tipo'),
+   ordem: integer('ordem'),
+   comentario: text('comentario')
 })
 
 export const midiasRelations = relations(midias, ({one}) => ({

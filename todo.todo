@@ -12,4 +12,11 @@
    [] salvar o desenho
    [x] fazer o upload dentro do shot
    [x] salvar esses arquivos localmente
+   [x] Poder definir a midia pricipal do shot
+   [x] permitir adicionar comentario na midia
+   [x] permitir mudar o tipo da midia
+   [x] permitir mudar a ordem
 [] apagar um shot
+[] Permitir informar a porcentagem do shot
+[] Mostrar e poder editar tipo do shot
+[] criar botão exportar - ele junta todas as midias em um .rar pronta para edição

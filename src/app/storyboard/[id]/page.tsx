@@ -22,9 +22,12 @@ const CardShot = (props:Shots & {index:number}) => {
          <CardTitle>#{props.index}</CardTitle>
          </CardHeader>
          <CardContent>
+            <CardDescription>Descrição: {props.descricao}</CardDescription>
             <CardDescription>Dialogo: {props.dialogo}</CardDescription>
             <CardDescription>Locucao: {props.locucao}</CardDescription>
             <CardDescription>Musica: {props.musica}</CardDescription>
+            <CardDescription>Ordem: {props.ordem}</CardDescription>
+            <CardDescription>Segundos: {props.duracao_s}</CardDescription>
          </CardContent>
          <CardFooter>
          {props.tipo ? <Badge variant="default" style={{width: '100%'}}>{props.tipo}</Badge> : null}

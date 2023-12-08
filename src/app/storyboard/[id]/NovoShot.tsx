@@ -37,21 +37,24 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
 
    const [open, setOpen] = useState(false)
    const form = useForm<z.infer<typeof ShotSchema>>({
-      mode:"onChange",
+      mode:"onBlur",
       resolver: zodResolver(ShotSchema),
       defaultValues: {
          progresso: 0,
          tipo: '',
-         dialogo: undefined,
+         dialogo: '',
          locucao: '',
-         musica: '',
+         // musica: '',
          id_stotyboard: parseInt(forStory) ?? 0,
+         duracao_s: 1,
+         descricao: undefined,
+         ordem: 0
       }
     })
 
     const isLoading = form.formState.isSubmitting;
 
-    console.log("form", form.formState.errors, forStory, typeof forStory)
+   //  console.log("form", form.formState.errors, forStory, typeof forStory)
 
     const { toast } = useToast()
 
@@ -92,6 +95,19 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
             <form 
            onSubmit={form.handleSubmit(onSubmit)}
            className='mt-6 w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col'>
+
+            <FormField
+            disabled={isLoading}
+            control={form.control}
+            name='descricao'
+            render={({field}) => {return(<FormItem>
+               <FormControl>
+                  <Textarea placeholder='Descrição' {...field}/>
+               </FormControl>
+               <FormMessage />
+            </FormItem>)}}
+            ></FormField>
+
             <FormField
             disabled={isLoading}
             control={form.control}
@@ -119,10 +135,24 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
             <FormField
             disabled={isLoading}
             control={form.control}
-            name='musica'
+            name='duracao_s'
             render={({field}) => {return(<FormItem>
+               <FormLabel>Duração (segundos)</FormLabel>
                <FormControl>
-               <Input type='text' placeholder='Música' {...field}/>
+               <Input type='number' placeholder='Duração' {...field}/>
+               </FormControl>
+               <FormMessage />
+            </FormItem>)}}
+            ></FormField>
+
+         <FormField
+            disabled={isLoading}
+            control={form.control}
+            name='ordem'
+            render={({field}) => {return(<FormItem>
+               <FormLabel>Ordem</FormLabel>
+               <FormControl>
+               <Input type='number' placeholder='Ordem' {...field}/>
                </FormControl>
                <FormMessage />
             </FormItem>)}}
@@ -149,8 +179,6 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
                   <FormMessage />
                </FormItem>)}}
             ></FormField>
-
-            {}
 
          <Button size='lg' disabled={isLoading} type='submit' className='w-full p-6'>{!isLoading ? `CRIAR` : <Loader/>}</Button>
            </form>

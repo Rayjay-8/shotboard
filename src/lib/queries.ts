@@ -29,7 +29,7 @@ export const  getShotsStory = async (idstory:number) => {
 
 export const getMidiasShot = async (idshot:number) => {
    try {
-      const data = await db.select().from(midias).where(eq(midias.id_shot, idshot))
+      const data = await db.select().from(midias).where(eq(midias.id_shot, idshot)).orderBy(midias.ordem)
       return data
    } catch (error) {
       console.log(error)
