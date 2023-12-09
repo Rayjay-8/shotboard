@@ -15,6 +15,7 @@ import DeleteStory from './DeleteStory';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import DeleteShot from './DeleteShot';
+import ExportarStory from './ExportarStory';
 
 const CardShot = (props:Shots & {index:number, url: string}) => {
    return <>
@@ -49,7 +50,11 @@ const page =  async ({params}:{params: {id:number}}) => {
       <Titulo className="bg-orange-200">Storyboard N° {params.id}</Titulo>
       <div className='flex gap-2 justify-between px-6 md:px-16 py-6'>
         <h2 className='uppercase'>Lista de shots</h2>
+        <div className='flex gap-4'>
+        <ExportarStory idStoryboard={params.id}/>
         <DeleteStory idStoryboard={params.id}/>
+
+        </div>
       </div>
     <div className='flex flex-wrap px-6 py-0 md:px-16 gap-4 mb-12'>
       {algo?.map((e, index) =>  <CardShot key={e.id_shot} url={"/storyboard/"+params.id+"/"+e.id_shot} index={index+1} {...e}/>)}

@@ -25,11 +25,13 @@
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-toast": "^1.1.5",
     "@types/formidable": "^3.4.5",
+    "archiver": "^6.0.1",
     "axios": "^1.6.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "dotenv": "^16.3.1",
     "drizzle-orm": "^0.29.1",
+    "jszip": "^3.10.1",
     "lucide-react": "^0.294.0",
     "next": "13.5.5",
     "next-themes": "^0.2.1",
@@ -42,6 +44,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/archiver": "^6.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

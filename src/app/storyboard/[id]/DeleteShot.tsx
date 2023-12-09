@@ -24,7 +24,7 @@ const DeleteShot = ({idshot}:{idshot:number}) => {
   return (<>
    <AlertDialog>
    <AlertDialogTrigger>
-   <Button className='bg-red-600'>Apagar</Button>
+   <div className='bg-red-600'>Apagar</div>
 
    </AlertDialogTrigger>
    <AlertDialogContent>
