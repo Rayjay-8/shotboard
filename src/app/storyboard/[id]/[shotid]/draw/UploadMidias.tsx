@@ -158,7 +158,9 @@ const DrawComponent = ({saveImageURL}) => {
    )
 }
 
-const UploadMidias = ({story, shot}) => {
+const UploadMidias = ({story, shot, midias}) => {
+
+   console.log("midias", midias)
    
    const { toast } = useToast()
 
@@ -169,6 +171,8 @@ const UploadMidias = ({story, shot}) => {
 
    const saveImageBanco = async (data, comment="") => {
 
+      console.log("o data >>>", data)
+
       const tipomidia = typefind(data.type)
       const midiavinculada = await createMidiasShot({
          id_storyboard: story,
@@ -176,7 +180,7 @@ const UploadMidias = ({story, shot}) => {
          principal: 0,
          path: data.path,
          tipo: tipomidia,
-         ordem: 0,
+         ordem: (midias?.length ?? 0) + 1,
          comentario: comment,
          duracao_s: 1,
       })
