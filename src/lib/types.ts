@@ -13,9 +13,9 @@ export const ShotSchema = z.object({
    duracao_s: z.coerce.number(),
    ordem: z.coerce.number(),
    progresso: z.number().optional(),
-   tipo: z.string(),
-   dialogo: z.string(),
-   locucao: z.string(),
+   tipo: z.string().nullish(),
+   dialogo: z.string().nullish(),
+   // locucao: z.string(),
    // musica: z.string(),
    id_stotyboard: z.number()
 })
@@ -23,7 +23,9 @@ export const ShotSchema = z.object({
 export const MidiaSchema = z.object({
    principal: z.coerce.boolean(),
    ordem: z.coerce.number(),
-   comentario: z.coerce.string().optional(),
+   comentario: z.coerce.string().nullish().optional(),
    tipo: z.string(),
-   duracao_s: z.coerce.number()
+   duracao_s: z.coerce.number(),
+   dialogo: z.coerce.string().nullish().optional(),
+   locucao: z.coerce.string().nullish().optional(),
 })

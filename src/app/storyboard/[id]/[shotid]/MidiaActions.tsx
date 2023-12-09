@@ -43,7 +43,7 @@ const CardMidia = (props:Midias & {onClick: ()=> null, onDelete: ()=>null} ) => 
    const Folderbase = `/midias/${props.id_storyboard}/${props.id_shot}/${props.path}`
    
    return(<Card className='items-center w-[432px] h-full bg-gray-100'>
-   <div className='space-y-1.5 p-6 flex justify-between gap-4'>
+   <div className='space-y-1.5 px-6 py-4 flex justify-between gap-4'>
       <CardTitle>#{props.ordem} ({props.duracao_s ?? 0}s)</CardTitle>
       <Button onClick={onDelete} title='Apagar' className='bg-red-600'>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -66,11 +66,15 @@ const CardMidia = (props:Midias & {onClick: ()=> null, onDelete: ()=>null} ) => 
    </div>
    <CardContent>
        {props.tipo === "video" ? <video controls  className='w-[320px] h-[300px]' src={Folderbase}></video> : null}
-       {props.tipo === "image" ? <img src={Folderbase} className='w-[370px] h-[370px]' style={{objectFit:"contain"}}/> : null}
-       {props.tipo === "audio" ? <audio controls src={Folderbase} ></audio> : null}
+       {props.tipo === "image" ? <img src={Folderbase} className='w-[370px] h-[208px]' style={{objectFit:"contain"}}/> : null}
+       {props.tipo === "audio" ? <audio className='w-full' controls src={Folderbase} ></audio> : null}
    </CardContent>
-   <CardFooter>
-     {props.comentario}
+   <CardFooter className='grid gap-2'>
+     {props.dialogo ? <p>Dialogo: {props.dialogo}</p>: null}
+     {props.locucao ? <p>Locução: {props.locucao}</p> : null}
+     <div className='bg-yellow-100'>
+      {props.comentario}
+     </div>
    </CardFooter>
    </Card>)
    }
@@ -152,12 +156,39 @@ const MidiaActions = ({listaMidias}:{listaMidias:Array<Midias>}) => {
                      control={form.control}
                      name='comentario'
                      render={({field}) => {return(<FormItem>
+                        <FormLabel>Comentario</FormLabel>
                         <FormControl>
                            <Textarea placeholder='Comentario' {...field}/>
                         </FormControl>
                         <FormMessage />
                      </FormItem>)}}
                      ></FormField>
+
+<FormField
+            disabled={isLoading}
+            control={form.control}
+            name='dialogo'
+            render={({field}) => {return(<FormItem>
+               <FormLabel>Dialogo</FormLabel>
+               <FormControl>
+                  <Textarea placeholder='Dialogo..' {...field}/>
+               </FormControl>
+               <FormMessage />
+            </FormItem>)}}
+            ></FormField>
+
+<FormField
+            disabled={isLoading}
+            control={form.control}
+            name='locucao'
+            render={({field}) => {return(<FormItem>
+               <FormLabel>Locução</FormLabel>
+               <FormControl>
+                  <Textarea placeholder='Locução' {...field}/>
+               </FormControl>
+               <FormMessage />
+            </FormItem>)}}
+            ></FormField>
 
                <FormField
                      disabled={isLoading}

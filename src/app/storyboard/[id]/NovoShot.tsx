@@ -101,8 +101,9 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
             control={form.control}
             name='descricao'
             render={({field}) => {return(<FormItem>
+               <FormLabel>Título</FormLabel>
                <FormControl>
-                  <Textarea placeholder='Descrição' {...field}/>
+                  <Input type='text' placeholder='Qual o objetivo desse shot?' {...field}/>
                </FormControl>
                <FormMessage />
             </FormItem>)}}
@@ -113,20 +114,9 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
             control={form.control}
             name='dialogo'
             render={({field}) => {return(<FormItem>
+               <FormLabel>Plano</FormLabel>
                <FormControl>
-                  <Textarea placeholder='Dialogo' {...field}/>
-               </FormControl>
-               <FormMessage />
-            </FormItem>)}}
-            ></FormField>
-
-            <FormField
-            disabled={isLoading}
-            control={form.control}
-            name='locucao'
-            render={({field}) => {return(<FormItem>
-               <FormControl>
-                  <Textarea placeholder='Locução' {...field}/>
+                  <Textarea placeholder='Descreva o que vai acontecer nesse shot' {...field}/>
                </FormControl>
                <FormMessage />
             </FormItem>)}}
@@ -163,7 +153,7 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
             control={form.control}
             name='tipo'
             render={({field}) => {return(<FormItem>
-                  <FormLabel>Tipo</FormLabel>
+                  <FormLabel>Tipo(REMOVER)</FormLabel>
                   <FormControl>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
 

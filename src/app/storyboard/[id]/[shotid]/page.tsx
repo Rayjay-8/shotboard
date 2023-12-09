@@ -27,7 +27,7 @@ const page = async ({params}:{params: {id:number, shotid: number}}) => {
          </p>
          </Titulo>
          {shotinfo?.dialogo && <div className="bg-gray-100 p-4">
-            <p><b>Dialogo: </b>
+            <p><b>Plano: </b>
             {shotinfo.dialogo}</p>
          </div>}
          {shotinfo?.locucao && <div className="bg-gray-100 p-4">

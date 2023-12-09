@@ -28,10 +28,10 @@ const CardShot = (props:Shots & {index:number, url: string}) => {
          </CardTitle>
          </CardHeader>
          <CardContent>
-            <CardDescription>Dialogo: {props.dialogo}</CardDescription>
-            <CardDescription>Locucao: {props.locucao}</CardDescription>
-            <CardDescription>Musica: {props.musica}</CardDescription>
-            <CardDescription>Ordem: {props.ordem}</CardDescription>
+            <CardDescription>Plano: {props.dialogo}</CardDescription>
+            {/* <CardDescription>Locucao: {props.locucao}</CardDescription> */}
+            {/* <CardDescription>Musica: {props.musica}</CardDescription> */}
+            {/* <CardDescription>Ordem: {props.ordem}</CardDescription> */}
             <CardDescription>Segundos: {props.duracao_s}</CardDescription>
          </CardContent>
          <CardFooter className='grid gap-4'>

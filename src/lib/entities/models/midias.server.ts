@@ -14,6 +14,8 @@ export type Midias = {
    ordem: number
    comentario?: string
    duracao_s?: number
+   dialogo?: string
+   locucao?: string
 }
 
 export const midias = sqliteTable('midias', {
@@ -26,6 +28,8 @@ export const midias = sqliteTable('midias', {
    ordem: integer('ordem'),
    comentario: text('comentario'),
    duracao_s: integer('duracao_s'),
+   locucao: text('locucao'),
+   dialogo: text('dialogo'),
 })
 
 export const midiasRelations = relations(midias, ({one}) => ({
