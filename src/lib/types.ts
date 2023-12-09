@@ -11,7 +11,7 @@ export const FormSchema = z.object({
 export const ShotSchema = z.object({
    descricao: z.string(),
    duracao_s: z.coerce.number(),
-   ordem: z.number(),
+   ordem: z.coerce.number(),
    progresso: z.number().optional(),
    tipo: z.string(),
    dialogo: z.string(),

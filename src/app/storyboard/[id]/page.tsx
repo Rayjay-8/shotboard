@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 
 import { Titulo } from '@/components/ui/Titulo';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shots } from '@/lib/entities';
+import { Shots, shots } from '@/lib/entities';
 import { getShotsStory } from '@/lib/queries';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -14,43 +14,45 @@ import CardShotNew from './NovoShot';
 import DeleteStory from './DeleteStory';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import DeleteShot from './DeleteShot';
 
-const CardShot = (props:Shots & {index:number}) => {
+const CardShot = (props:Shots & {index:number, url: string}) => {
    return <>
-   <Card className='items-center w-[300px] h-[300px] bg-gray-100 '>
+   <Card className='items-center w-[300px] h-fill bg-gray-100 '>
       <CardHeader>
-         <CardTitle>#{props.index}</CardTitle>
+         <CardTitle>
+         <Link href={props.url}>
+            #{props.index} - {props.descricao}
+            </Link>
+         </CardTitle>
          </CardHeader>
          <CardContent>
-            <CardDescription>Descrição: {props.descricao}</CardDescription>
             <CardDescription>Dialogo: {props.dialogo}</CardDescription>
             <CardDescription>Locucao: {props.locucao}</CardDescription>
             <CardDescription>Musica: {props.musica}</CardDescription>
             <CardDescription>Ordem: {props.ordem}</CardDescription>
             <CardDescription>Segundos: {props.duracao_s}</CardDescription>
          </CardContent>
-         <CardFooter>
+         <CardFooter className='grid gap-4'>
          {props.tipo ? <Badge variant="default" style={{width: '100%'}}>{props.tipo}</Badge> : null}
-         <Progress value={props.progresso} />
+         {/* <Progress value={10} /> */}
+         <DeleteShot idshot={props.id_shot}/>
          </CardFooter>
       </Card>
    </>
 }
 
 const page =  async ({params}:{params: {id:number}}) => {
-   console.log(params)
-
-   const algo = await getShotsStory(params.id)
-   console.log(algo)
+   const algo = await getShotsStory(params.id)   
   return (
    <main className="">
       <Titulo className="bg-orange-200">Storyboard N° {params.id}</Titulo>
-      <div className='flex gap-2 justify-between px-16 py-6'>
+      <div className='flex gap-2 justify-between px-6 md:px-16 py-6'>
         <h2 className='uppercase'>Lista de shots</h2>
         <DeleteStory idStoryboard={params.id}/>
       </div>
-    <div className='flex flex-wrap px-16 py-6 gap-4'>
-      {algo?.map((e, index) => <Link href={"/storyboard/"+params.id+"/"+e.id_shot}> <CardShot key={e.id_shot} index={index+1} {...e}/></Link>)}
+    <div className='flex flex-wrap px-6 py-0 md:px-16 gap-4 mb-12'>
+      {algo?.map((e, index) =>  <CardShot key={e.id_shot} url={"/storyboard/"+params.id+"/"+e.id_shot} index={index+1} {...e}/>)}
       <CardShotNew forStory={params.id}/>
     </div>
     </main>

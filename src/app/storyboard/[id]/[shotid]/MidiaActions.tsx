@@ -33,7 +33,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { useForm } from 'react-hook-form';
 import { MidiaSchema } from '@/lib/types';
 import { Switch } from '@/components/ui/switch';
-import { deleteMidiaShot, updateMidiasShot } from '@/lib/server-actions/criar-shot';
+import { deleteMidiaShot, updateMidiasShot } from '@/lib/server-actions/query-shot';
 
 const CardMidia = (props:Midias & {onClick: ()=> null, onDelete: ()=>null} ) => {
    const {onClick, onDelete} = props

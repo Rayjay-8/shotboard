@@ -24,13 +24,13 @@ export default async function Home() {
   return (
     <main className="">
       <Titulo className="bg-emerald-500">Storyboard</Titulo>
-      <div className='flex gap-2 justify-between px-16 py-6'>
+      <div className='flex gap-2 justify-between px-6 py-6 md:px-16'>
         <h2 className='uppercase'>Todos videos</h2>
         <NovoStory/>
       </div>
-      <div className='flex flex-wrap px-16 py-6 gap-4'>
+      <div className='flex flex-wrap py-6 gap-4 px-6 md:px-16'>
         {data.map(e => <>
-        <Link href={"/storyboard/"+e.id}>
+        <Link href={"/storyboard/"+e.id} key={e.id}>
         <Card key={e.id} className='items-center w-[300px] h-[300px] bg-gray-100 ' 
         >
           <CardHeader>

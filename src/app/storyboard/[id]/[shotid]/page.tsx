@@ -26,10 +26,10 @@ const page = async ({params}:{params: {id:number, shotid: number}}) => {
 
          </p>
          </Titulo>
-         <div className='px-16 py-6 flex justify-between'>
-          <div></div>
+         <div className='px-6 md:px-16 py-6 flex justify-between'>
+          <div>Envie midias para o shot</div>
             <Link href={params.shotid+"/draw"}>
-              <Button>Enviar midia</Button>
+              <Button>Enviar</Button>
             </Link>
          </div>
          <ListaMidias shot={params.shotid} listaMidias={listaMidias}/>

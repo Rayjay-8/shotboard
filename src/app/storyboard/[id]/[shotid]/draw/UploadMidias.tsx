@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react'
 import axios from "axios"
-import { createMidiasShot } from '@/lib/server-actions/criar-shot';
+import { createMidiasShot } from '@/lib/server-actions/query-shot';
 import { shortString, typefind } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
@@ -245,7 +245,7 @@ const UploadMidias = ({story, shot}) => {
 
   return (<>
 
-         {uploadingmidia ? "enviando..." : <div className=' flex justify-between mb-4'>
+         {uploadingmidia ? "enviando..." : <div className=' grid gap-4 justify-between mb-4 md:flex'>
             {showDraw ? null : <div>
                <h2>Faça upload localmente das midias</h2>
                <input type="file" name="upload" id="upload" onChange={onUpload} multiple/>

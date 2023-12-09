@@ -18,8 +18,9 @@
    [x] adicionar tempo de midia 
    [x] permitir desenhar no mobile
    [x] se o shot tem 10 segundos mostrar o percentual do shot de acordo com as midia marcadas como principal
+   [x] melhorar a visao no celular
+   [x] apagar um shot
    [] criar botão exportar - ele junta todas as midias em um .rar pronta para edição
-[] apagar um shot
 [] colocar borracha
 [] deixar mais facil marcar midia como principal
 [] Mostrar e poder editar tipo do shot

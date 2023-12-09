@@ -21,7 +21,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { createshot } from '@/lib/server-actions/criar-shot';
+import { createshot } from '@/lib/server-actions/query-shot';
 import {
    Select,
    SelectContent,
@@ -171,7 +171,7 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
                      <SelectValue placeholder="Tipo de shot" />
                   </SelectTrigger>
                   <SelectContent>
-                     {typeShots.map(e => <SelectItem value={e}>{e}</SelectItem>)}
+                     {typeShots.map(e => <SelectItem key={e} value={e}>{e}</SelectItem>)}
                   </SelectContent>
 
                   </Select>
