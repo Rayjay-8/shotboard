@@ -70,8 +70,8 @@ const CardMidia = (props:Midias & {onClick: ()=> null, onDelete: ()=>null} ) => 
        {props.tipo === "audio" ? <audio className='w-full' controls src={Folderbase} ></audio> : null}
    </CardContent>
    <CardFooter className='grid gap-2'>
-     {props.dialogo ? <p>Dialogo: {props.dialogo}</p>: null}
-     {props.locucao ? <p>Locução: {props.locucao}</p> : null}
+     {props.dialogo ? <p className='bg-blue-100'>Dialogo: {props.dialogo}</p>: null}
+     {props.locucao ? <p className='bg-red-100'>Locução: {props.locucao}</p> : null}
      <div className='bg-yellow-100'>
       {props.comentario}
      </div>

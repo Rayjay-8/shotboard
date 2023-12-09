@@ -14,12 +14,16 @@ export async function POST(request: Request) {
       throw new Error('Arquivo não encontrado na solicitação.');
     }
     const nomeTratado = (midia.name).trim().replaceAll(" ", "_").replaceAll(":", "_")
+    const folderba = `public/midias/${storyboardid}`
     const folderbase = `public/midias/${storyboardid}/${shotid}`
     const filePath =  folderbase +"/"+ nomeTratado;
 
       try {
+         if (!fss.existsSync(folderba)) {
+            fss.mkdirSync(folderba);
+         }
          if (!fss.existsSync(folderbase)) {
-         fss.mkdirSync(folderbase);
+            fss.mkdirSync(folderbase);
          }
       } catch (err) {
          console.error(err);
