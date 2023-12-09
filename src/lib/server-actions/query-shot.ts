@@ -49,19 +49,19 @@ export const updateMidiasShot = async (id:number, data:Partial<Midias>) => {
    }
 }
 
-export const deleteMidiaShot = async (id:number) => {
+export const deleteMidiaShot = async (idstory:number, idshot:number, idmidia:number) => {
    try {
 
-      const midiaInfo = await db.select().from(midias).where(eq(midias.id_midia, id)).limit(1)
+      const midiaInfo = await db.select().from(midias).where(eq(midias.id_midia, idmidia)).limit(1)
       
       if(midiaInfo.length){
          const med = midiaInfo[0]
-         const url = '/api/midia?file='+med.path
+         const url = `/api/midia?story=${idstory}&shot=${idshot}&file=${med.path}`
          console.log("url", url)
          await api.get(url)
       }
 
-      const ret = await db.delete(midias).where(eq(midias.id_midia, id))
+      const ret = await db.delete(midias).where(eq(midias.id_midia, idmidia))
       revalidateTag('midias')
       return { data: null, error: null }
    } catch (error) {

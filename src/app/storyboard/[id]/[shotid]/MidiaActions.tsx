@@ -39,6 +39,8 @@ const CardMidia = (props:Midias & {onClick: ()=> null, onDelete: ()=>null} ) => 
    const {onClick, onDelete} = props
 
    console.log("props", props)
+
+   const Folderbase = `/midias/${props.id_storyboard}/${props.id_shot}/${props.path}`
    
    return(<Card className='items-center w-[432px] h-full bg-gray-100'>
    <div className='space-y-1.5 p-6 flex justify-between gap-4'>
@@ -63,9 +65,9 @@ const CardMidia = (props:Midias & {onClick: ()=> null, onDelete: ()=>null} ) => 
       {/* ORDER: {props.ordem} */}
    </div>
    <CardContent>
-       {props.tipo === "video" ? <video controls  className='w-[320px] h-[300px]' src={'/midias/'+props.path}></video> : null}
-       {props.tipo === "image" ? <img src={'/midias/'+props.path} className='w-[370px] h-[370px]' style={{objectFit:"contain"}}/> : null}
-       {props.tipo === "audio" ? <audio controls src={'/midias/'+props.path} ></audio> : null}
+       {props.tipo === "video" ? <video controls  className='w-[320px] h-[300px]' src={Folderbase}></video> : null}
+       {props.tipo === "image" ? <img src={Folderbase} className='w-[370px] h-[370px]' style={{objectFit:"contain"}}/> : null}
+       {props.tipo === "audio" ? <audio controls src={Folderbase} ></audio> : null}
    </CardContent>
    <CardFooter>
      {props.comentario}
@@ -112,11 +114,11 @@ const MidiaActions = ({listaMidias}:{listaMidias:Array<Midias>}) => {
       }
    }
 
-   const deleteMidia = async (id_midia) => {
-      if(id_midia){
-         const d = await deleteMidiaShot(id_midia)
+   const deleteMidia = async (midia:Midias) => {
+      if(midia.id_midia){
+         const d = await deleteMidiaShot(midia.id_storyboard, midia.id_shot, midia.id_midia)
          toast({
-            title: "Mídia removida! #"+id_midia
+            title: "Mídia removida! #"+midia.id_midia
          })
       }
    }
@@ -131,7 +133,7 @@ const MidiaActions = ({listaMidias}:{listaMidias:Array<Midias>}) => {
 
   return (
     <>
-    {listaMidias?.map(midia => <CardMidia key={midia.id_midia} onDelete={() => deleteMidia(midia.id_midia)} onClick={() => onSelectMidia(midia)} {...midia}/>)}
+    {listaMidias?.map(midia => <CardMidia key={midia.id_midia} onDelete={() => deleteMidia(midia)} onClick={() => onSelectMidia(midia)} {...midia}/>)}
 
     <Sheet open={Boolean(select)} onOpenChange={setSelect}>
       {/* <SheetTrigger>Open</SheetTrigger> */}

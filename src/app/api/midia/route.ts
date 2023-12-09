@@ -1,20 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from "fs/promises"
+import fss from "fs"
 
 export async function POST(request: Request) {
 
    const data = await request.formData()
 
    const midia = data.get('midia')
+   const storyboardid = data.get('storyboard')
+   const shotid = data.get('shot')
 
-   // Certifique-se de que midia é um arquivo antes de prosseguir
-   if (!midia || !(midia instanceof File)) {
+   if (!midia || !storyboardid || !shotid) {
       throw new Error('Arquivo não encontrado na solicitação.');
     }
-    const nomeTratado = (midia.name).trim().replaceAll(" ", "_")
-    const filePath = "public/midias" + '/' + nomeTratado;
+    const nomeTratado = (midia.name).trim().replaceAll(" ", "_").replaceAll(":", "_")
+    const folderbase = `public/midias/${storyboardid}/${shotid}`
+    const filePath =  folderbase +"/"+ nomeTratado;
 
-   // Salve o conteúdo do arquivo diretamente
+      try {
+         if (!fss.existsSync(folderbase)) {
+         fss.mkdirSync(folderbase);
+         }
+      } catch (err) {
+         console.error(err);
+      }
+
+    console.log(filePath)
+
    midia.arrayBuffer().then((buffer) => {
       return fs.writeFile(filePath, Buffer.from(buffer));
     });
@@ -25,11 +37,15 @@ export async function POST(request: Request) {
 export async function GET(req: NextRequest) {
    // const file = req.url.searchParams
    const filepath = req.nextUrl.searchParams.get('file')
-   console.log(filepath)
-   if(filepath){
+   const storyid = req.nextUrl.searchParams.get('story')
+   const shotyid = req.nextUrl.searchParams.get('shot')
+
+   console.log("foi ???", storyid, shotyid, filepath)
+   
+   if(filepath && storyid && shotyid){
       try {
          
-         fs.unlink('public/midias/'+filepath)
+         fs.unlink(`public/midias/${storyid}/${shotyid}/${filepath}`)
       } catch (error) {
          console.log(error)
          

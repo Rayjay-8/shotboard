@@ -26,6 +26,14 @@ const page = async ({params}:{params: {id:number, shotid: number}}) => {
 
          </p>
          </Titulo>
+         {shotinfo?.dialogo && <div className="bg-gray-100 p-4">
+            <p><b>Dialogo: </b>
+            {shotinfo.dialogo}</p>
+         </div>}
+         {shotinfo?.locucao && <div className="bg-gray-100 p-4">
+            <p><b>Locução: </b>
+            {shotinfo.locucao}</p>
+         </div>}
          <div className='px-6 md:px-16 py-6 flex justify-between'>
           <div>Envie midias para o shot</div>
             <Link href={params.shotid+"/draw"}>
