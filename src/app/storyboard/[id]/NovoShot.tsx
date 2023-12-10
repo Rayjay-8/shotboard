@@ -59,9 +59,9 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
     const { toast } = useToast()
 
     const onSubmit = async (formData:Shots) => {
-      console.log("formData",formData)
+      
       const result = await createshot(formData)
-      console.log("result", result)
+      
       toast({
          title: "Voce criou um shot novo",
          description: (
@@ -79,7 +79,7 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
    return <>
    <Dialog open={open} onOpenChange={setOpen}>
    <DialogTrigger asChild>
-   <Card className='flex justify-center items-center w-[300px] h-[300px] bg-gray-100 '>
+   <Card className='flex justify-center border-dashed items-center border-4 w-[300px] h-[300px] bg-gray-100 '>
       <svg xmlns="http://www.w3.org/2000/svg" 
             fill="none" viewBox="0 0 24 24" 
             strokeWidth={1.5} stroke="currentColor" 
@@ -153,7 +153,7 @@ const CardShotNew = ({forStory}:{forStory:string}) => {
             control={form.control}
             name='tipo'
             render={({field}) => {return(<FormItem>
-                  <FormLabel>Tipo(REMOVER)</FormLabel>
+                  <FormLabel>Tipo</FormLabel>
                   <FormControl>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
 

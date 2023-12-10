@@ -18,6 +18,16 @@ export const createshot = async (data: Shots) => {
    }
 }
 
+export const editShot = async (id: number, newdata:Partial<Shots>) => {
+   try {
+      const ret = await db.update(shots).set(newdata).where(eq(shots.id_shot, id))
+      revalidateTag('shots')
+      return { data : ret}
+   } catch (error) {
+      return ({error: true, data: null})
+   }
+}
+
 export const deleteShot = async (id:number) => {
    try {
       const retmid = await db.delete(midias).where(eq(midias.id_shot, id))
@@ -57,7 +67,7 @@ export const deleteMidiaShot = async (idstory:number, idshot:number, idmidia:num
       if(midiaInfo.length){
          const med = midiaInfo[0]
          const url = `/api/midia?story=${idstory}&shot=${idshot}&file=${med.path}`
-         console.log("url", url)
+         
          await api.get(url)
       }
 

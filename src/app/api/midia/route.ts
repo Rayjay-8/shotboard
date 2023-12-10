@@ -29,7 +29,7 @@ export async function POST(request: Request) {
          console.error(err);
       }
 
-    console.log(filePath)
+    
 
    midia.arrayBuffer().then((buffer) => {
       return fs.writeFile(filePath, Buffer.from(buffer));
@@ -44,7 +44,7 @@ export async function GET(req: NextRequest) {
    const storyid = req.nextUrl.searchParams.get('story')
    const shotyid = req.nextUrl.searchParams.get('shot')
 
-   console.log("foi ???", storyid, shotyid, filepath)
+   
    
    if(filepath && storyid && shotyid){
       try {

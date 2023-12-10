@@ -14,7 +14,7 @@ const page = async ({params}:{params: {id:number, shotid: number}}) => {
 
   const TOTAL = listaMidias?.reduce((acc, value) => acc + value?.duracao_s ?? 0, 0)
 
-  console.log(listaMidias, TOTAL, shotinfo)
+
   
   return (
     <main className="">

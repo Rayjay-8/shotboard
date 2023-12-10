@@ -17,7 +17,7 @@ export const ShotSchema = z.object({
    dialogo: z.string().nullish(),
    // locucao: z.string(),
    // musica: z.string(),
-   id_stotyboard: z.number()
+   id_stotyboard: z.number().optional()
 })
 
 export const MidiaSchema = z.object({

@@ -28,7 +28,7 @@ export default async function Home() {
         <h2 className='uppercase'>Todos videos</h2>
         <NovoStory/>
       </div>
-      <div className='flex flex-wrap py-6 gap-4 px-6 md:px-16'>
+      <div className='flex flex-wrap gap-4 px-6 md:px-16'>
         {data.map(e => <>
         <Link href={"/storyboard/"+e.id} key={e.id}>
         <Card key={e.id} className='items-center w-[300px] h-[300px] bg-gray-100 ' 

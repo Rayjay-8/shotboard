@@ -16,10 +16,19 @@ export const getallstoryboard = async () => {
    }
 }
 
+export const getStoryboard = async (id:number) => {
+   try {
+      const data = await db.select().from(storyboard).where(eq(storyboard.id, id)).limit(1)
+      return {data: data?.[0]}
+   } catch (error) {
+      return {error: true, data: null}
+   }
+}
+
 
 export const  getShotsStory = async (idstory:number) => {
    try {
-      const data = await db.select().from(shots).where(eq(shots.id_stotyboard, idstory))
+      const data = await db.select().from(shots).where(eq(shots.id_stotyboard, idstory)).orderBy(shots.ordem)
       return data
    } catch (error) {
       console.log(error)

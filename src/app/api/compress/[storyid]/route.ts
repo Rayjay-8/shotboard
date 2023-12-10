@@ -25,8 +25,7 @@ export async function GET(req: NextRequest, rt: any) {
    const folderPath = 'public/midias/'+id
 
    const zip = new JSZip();
-
-   console.log(shotsInfo)
+   
    const shotsFolders = fss.readdirSync(folderPath);
    for(const shots of shotsFolders){
       const shotF = folderPath+"/"+shots

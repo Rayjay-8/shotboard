@@ -38,7 +38,6 @@ import { deleteMidiaShot, updateMidiasShot } from '@/lib/server-actions/query-sh
 const CardMidia = (props:Midias & {onClick: ()=> null, onDelete: ()=>null} ) => {
    const {onClick, onDelete} = props
 
-   console.log("props", props)
 
    const Folderbase = `/midias/${props.id_storyboard}/${props.id_shot}/${props.path}`
    
@@ -106,7 +105,7 @@ const MidiaActions = ({listaMidias}:{listaMidias:Array<Midias>}) => {
       
       if(select?.id_midia){
          const up = await updateMidiasShot(select.id_midia, data)
-         console.log("up", up)
+         
          setSelect(false)
          toast({
             title: "Mídia Atualizada!"

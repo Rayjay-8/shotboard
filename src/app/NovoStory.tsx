@@ -42,9 +42,7 @@ import { Storyboard } from '@/lib/entities';
    const isLoading = form.formState.isSubmitting;
  
    const onSubmit = async (formData:Storyboard) => {
-     console.log("formData",formData)
      const da = await createnovostoryboard(formData)
-     console.log("data", da) 
      setOpen(false) 
    }
  

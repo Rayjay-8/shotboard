@@ -42,7 +42,7 @@ const DrawComponent = ({saveImageURL}) => {
          ctx.rect(0, 0, WIDTH, EHIGHT);
          ctx.fillStyle = "white";
          ctx.fill();
-         console.log("fazendo o fill")
+         
          setContext(ctx)
       }
 
@@ -160,7 +160,7 @@ const DrawComponent = ({saveImageURL}) => {
 
 const UploadMidias = ({story, shot, midias}) => {
 
-   console.log("midias", midias)
+   
    
    const { toast } = useToast()
 
@@ -171,7 +171,7 @@ const UploadMidias = ({story, shot, midias}) => {
 
    const saveImageBanco = async (data, comment="") => {
 
-      console.log("o data >>>", data)
+      
 
       const tipomidia = typefind(data.type)
       const midiavinculada = await createMidiasShot({
@@ -227,13 +227,13 @@ const UploadMidias = ({story, shot, midias}) => {
                formData.append('storyboard', story)
                formData.append('shot', shot)
                const { data } = await axios.post("/api/midia", formData)
-               console.log(data)
+               
                await saveImageBanco(data)
                router.replace(`/storyboard/${story}/${shot}`)
                setUploadingmidia(prev => prev - 1)
             } catch (error) {
                console.log(error)
-               console.log("Erro ao salvar")
+               
                toast({
                   title: "Erro ao Salvar!",
                   description: `Error: ${error}`
