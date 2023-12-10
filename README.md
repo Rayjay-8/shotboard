@@ -1,7 +1,6 @@
 
-exemplos:
-https://github.com/ajnart/homarr/tree/fc38f7ab290e5e6a0c8af7afc4b6abbe2d2472dc
-
+<!-- Project Title -->
+![Banner](docs/banner.png)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

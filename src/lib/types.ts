@@ -12,7 +12,7 @@ export const ShotSchema = z.object({
    descricao: z.string(),
    duracao_s: z.coerce.number(),
    ordem: z.coerce.number(),
-   progresso: z.number().optional(),
+   progresso: z.coerce.number().min(0).max(100).nullish().optional(),
    tipo: z.string().nullish(),
    dialogo: z.string().nullish(),
    // locucao: z.string(),
