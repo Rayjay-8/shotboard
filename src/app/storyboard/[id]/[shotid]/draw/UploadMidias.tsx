@@ -261,7 +261,7 @@ const UploadMidias = ({ story, shot, midias }) => {
                const { data } = await axios.post("/api/midia", formData);
 
                await saveImageBanco(data);
-               router.replace(`/storyboard/${story}/${shot}`);
+               
                setUploadingmidia((prev) => prev - 1);
             } catch (error) {
                console.log(error);
@@ -273,6 +273,7 @@ const UploadMidias = ({ story, shot, midias }) => {
             }
          }
       }
+      router.replace(`/storyboard/${story}/${shot}`);
       setUploadingmidia(0);
    };
 

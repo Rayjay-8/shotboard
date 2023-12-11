@@ -34,6 +34,7 @@ import { useForm } from 'react-hook-form';
 import { MidiaSchema } from '@/lib/types';
 import { Switch } from '@/components/ui/switch';
 import { deleteMidiaShot, updateMidiasShot } from '@/lib/server-actions/query-shot';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const CardMidia = (props:Midias & {onClick: ()=> null, onDelete: ()=>null} ) => {
    const {onClick, onDelete} = props
@@ -140,11 +141,13 @@ const MidiaActions = ({listaMidias}:{listaMidias:Array<Midias>}) => {
 
     <Sheet open={Boolean(select)} onOpenChange={setSelect}>
       {/* <SheetTrigger>Open</SheetTrigger> */}
-      <SheetContent>
+      <SheetContent side="right" className={" overflow-y-scroll max-h-screen"}>
          <SheetHeader>
             <SheetTitle>Edição da mídia</SheetTitle>
-            <SheetDescription>
-               <Form {...form}>
+         </SheetHeader>
+         <div className="grid gap-4 py-4">
+         
+         <Form {...form}>
                   <form
                   onSubmit={form.handleSubmit(onMidiaEdit)}
                   className='mt-6 w-full sm:justify-center sm:w-[330px] space-y-6 flex flex-col'
@@ -269,8 +272,8 @@ const MidiaActions = ({listaMidias}:{listaMidias:Array<Midias>}) => {
                      <Button size='lg' disabled={isLoading} type='submit' className='w-full p-6'>{!isLoading ? `Salvar` : <Loader/>}</Button>
                   </form>
                </Form>
-            </SheetDescription>
-         </SheetHeader>
+            
+         </div>
       </SheetContent>
       </Sheet>
     </>

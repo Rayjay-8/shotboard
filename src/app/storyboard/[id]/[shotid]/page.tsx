@@ -20,9 +20,9 @@ const page = async ({params}:{params: {id:number, shotid: number}}) => {
     <main className="">
       <Titulo className="bg-blue-200">
          
-         Shot - {shotinfo.descricao}
+         Shot - {shotinfo?.descricao}
          <p>
-         {TOTAL}s de {shotinfo.duracao_s}s
+         {TOTAL}s de {shotinfo?.duracao_s}s
 
          </p>
          </Titulo>
