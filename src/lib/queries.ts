@@ -1,7 +1,7 @@
 'use server';
-import { eq } from "drizzle-orm";
+import { eq, gt } from "drizzle-orm";
 import { db } from "./app/db/db.server"
-import { Storyboard, midias, shots, storyboard } from "./entities"
+import { Storyboard, midias, palavras, shots, storyboard } from "./entities"
 
 export const getallstoryboard = async () => {
    try {
@@ -52,5 +52,20 @@ export const getMidiasShot = async (idshot:number) => {
       return data
    } catch (error) {
       console.log(error)
+   }
+}
+
+export const getPalavrasDoDia = async () => {
+   try {
+      var hoje = new Date();
+      // const ontem = new Date(hoje)
+      // ontem.setDate(hoje.getDate() - 1);
+      
+      hoje.setHours(0, 0, 0, 0);
+      console.log("hoje", hoje.toISOString())
+      const data = await db.select().from(palavras).where(gt(palavras.inclusao, hoje.toISOString()))
+      return data
+   } catch (error) {
+      console.log("erro 123445")
    }
 }
